@@ -14,7 +14,14 @@
 			"NODE_VERSION": "lts/*"
 		}
 	},
-
+		
+	// ホストマシンからアクセスできるコンテナのポート番号docker -p 8080:8080と同様
+	"appPort": ["8080:8080"],
+	// Docker run コマンド引数
+	"runArgs": [
+		"--name=java_dev_container", // コンテナ名の指定
+		"--add-host=google.com:8.8.8.8" // コンテナ内のhostsファイルの編集
+	],
 	// Set *default* container specific settings.json values on container create.
 	"settings": { 
 		"terminal.integrated.shell.linux": "/bin/bash",
@@ -31,14 +38,29 @@
 	// Add the IDs of extensions you want installed when the container is created.
 	"extensions": [
 		"vscjava.vscode-java-pack",
-		"pivotal.vscode-boot-dev-pack"
+		"ms-vscode-remote.remote-containers",
+		"pivotal.vscode-spring-boot",
+		"donjayamanne.git-extension-pack",
+		"sonarsource.sonarlint-vscode",
+		"vscjava.vscode-spring-initializr",
+		"streetsidesoftware.code-spell-checker",
+		"oderwat.indent-rainbow",
+		"vscode-icons-team.vscode-icons",
+		"esbenp.prettier-vscode",
+		"coenraads.bracket-pair-colorizer-2",
+		"jebbs.plantuml",
+		"wayou.vscode-todo-highlight",
+		"ionutvmi.path-autocomplete",
+		"ryu1kn.partial-diff",
+		"ibm.output-colorizer"
 	],
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	// "postCreateCommand": "java -version",
+	// コンテナ作成後にmvnwに実行権限を付与する
+	"postCreateCommand": "find . -type f -name 'mvnw' -exec chmod +x \\{\\} \\;",
 
 	// Comment out connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
 	"remoteUser": "vscode"
