@@ -29,7 +29,9 @@ RUN if [ "${INSTALL_NODE}" = "true" ]; then su vscode -c "source /usr/local/shar
 WORKDIR /OracleJDK
 
 # インストーラーフォルダをイメージにコピー
-COPY ./OracleJDK .
+COPY ./OracleJDK/jdk-8u271-linux-x64.tar.gz ./jdk-8u271-linux-x64.tar.gz
 
 # インストーラーの展開
 RUN tar zxf jdk-8u271-linux-x64.tar.gz
+# アーカイブの削除
+RUN rm -f jdk-8u271-linux-x64.tar.gz
