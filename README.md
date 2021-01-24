@@ -32,3 +32,10 @@ docker rm -f [コンテナID]
 ~~~
 docker exec -it javadev /bin/bash
 ~~~
+
+Git初期設定
+~~~
+git config --global user.name "John Doe"
+git config --global user.email johndoe@example.com
+git config --global credential.helper store
+~~~
