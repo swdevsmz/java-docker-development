@@ -25,13 +25,15 @@ RUN if [ "${INSTALL_NODE}" = "true" ]; then su vscode -c "source /usr/local/shar
 # [Optional] Uncomment this line to install global node packages.
 # RUN su vscode -c "source /usr/local/share/nvm/nvm.sh && npm install -g <your-package-here>" 2>&1
 
+RUN apt-get update
+
 # 作業ディレクトリの指定
 WORKDIR /OracleJDK
 
 # インストーラーフォルダをイメージにコピー
-COPY ./OracleJDK/jdk-8u271-linux-x64.tar.gz ./jdk-8u271-linux-x64.tar.gz
+COPY ./OracleJDK/jdk-8u241-linux-x64.tar.gz ./jdk-8u241-linux-x64.tar.gz
 
 # インストーラーの展開
-RUN tar zxf jdk-8u271-linux-x64.tar.gz
+RUN tar zxf jdk-8u241-linux-x64.tar.gz
 # アーカイブの削除
-RUN rm -f jdk-8u271-linux-x64.tar.gz
+RUN rm -f jdk-8u241-linux-x64.tar.gz

@@ -1,13 +1,4 @@
 {
-	"terminal.integrated.shell.linux": "/bin/bash",
-	"java.home": "/docker-java-home",
-	"java.configuration.runtimes": [
-		{
-			"default": true,
-			"name": "JavaSE-1.8",
-			"path": "/OracleJDK/jdk1.8.0_271"
-		}
-	],
 	"folders": [
 		{
 			"path": "demo"

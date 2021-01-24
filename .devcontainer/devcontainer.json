@@ -16,7 +16,7 @@
 	},
 		
 	// ホストマシンからアクセスできるコンテナのポート番号docker -p 8080:8080と同様
-	"appPort": ["8080:8080"],
+	"forwardPorts": [8080],
 	// Docker run コマンド引数
 	"runArgs": [
 		"--name=java_dev_container", // コンテナ名の指定
@@ -30,9 +30,10 @@
 			{
 				"default": true,
 				"name": "JavaSE-1.8",
-				"path": "/OracleJDK/jdk1.8.0_271"
+				"path": "/OracleJDK/jdk1.8.0_241"
 			}
 		],
+		"java.configuration.checkProjectSettingsExclusions": false
 	},
 	
 	// Add the IDs of extensions you want installed when the container is created.
@@ -60,11 +61,8 @@
 
 	// Use 'postCreateCommand' to run commands after the container is created.
 	// コンテナ作成後にmvnwに実行権限を付与する
-	"postCreateCommand": "find . -type f -name 'mvnw' -exec chmod +x \\{\\} \\;",
+	"postCreateCommand": "chmod +w -R /var/log; find . -type f -name 'mvnw' -exec chmod +x \\{\\} \\;",
 
 	// Comment out connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
 	"remoteUser": "vscode"
-	"mounts": [
-		"source=${localWorkspaceFolder},target=/workspaces,type=bind,consistency=cached"
-	]
 }
