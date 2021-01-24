@@ -14,9 +14,6 @@
 			"NODE_VERSION": "lts/*"
 		}
 	},
-		
-	// ホストマシンからアクセスできるコンテナのポート番号docker -p 8080:8080と同様
-	"forwardPorts": [8080],
 	// Docker run コマンド引数
 	"runArgs": [
 		"--name=java_dev_container", // コンテナ名の指定
@@ -57,7 +54,7 @@
 	],
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	// "forwardPorts": [],
+	"forwardPorts": [8080],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
 	// コンテナ作成後にmvnwに実行権限を付与する
